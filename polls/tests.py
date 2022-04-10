@@ -92,7 +92,7 @@ class IndexTestCase(TestCase):
     def setUp(self):
         Question.objects.create(id=1,question_text="go where?", pub_date=timezone.now())
         Choice.objects.create(id=1,question_id=1,choice_text="hangzhou", votes=0)
-        Choice.objects.create(id=2,question_id=1,choice_text="shanghai", votes=7)
+        Choice.objects.create(id=2,question_id=1,choice_text="shanghai", votes=7777)
 
     def test_index_page(self):
         #测试问题列表页
@@ -126,6 +126,8 @@ class IndexTestCase(TestCase):
         #测试投票动作页
         response = self.client.post('/polls/1/vote/',data={"choice":2})
         self.assertEqual(response.status_code,302)
+        response = self.client.get('/polls/1/results/')
+        self.assertIn(b"7778",response.content)
 
 
 
