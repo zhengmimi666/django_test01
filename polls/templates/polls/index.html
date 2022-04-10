@@ -1,0 +1,31 @@
+{% extends "polls/base_page.html" %}
+{% block base %}
+    <!--首页问题列表-->
+          {% if latest_question_list %}
+                <ul>
+                    <div class="col-md-6">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>问题</th>
+                            <th>时间</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for question in latest_question_list %}
+                              <tr>
+                                <td>{{ question.id }}</td>
+                                <td><a href="{% url 'polls:detail' question.id %}">{{ question.question_text}}</a></td>
+                                <td>{{ question.pub_date|date:"Y-m-d H:i:s"}}</td>
+                              </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+{% endblock %}
+

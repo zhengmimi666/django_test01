@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'polls/html')],  #自定义模版路径方案
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
