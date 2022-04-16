@@ -16,7 +16,7 @@
                             {% for question in latest_question_list %}
                               <tr>
                                 <td>{{ question.id }}</td>
-                                <td><a href="{% url 'polls:detail' question.id %}">{{ question.question_text}}</a></td>
+                                <td><a id="{{question.id}}" href="{% url 'polls:detail' question.id %}">{{ question.question_text}}</a></td>
                                 <td>{{ question.pub_date|date:"Y-m-d H:i:s"}}</td>
                               </tr>
                             {% endfor %}
